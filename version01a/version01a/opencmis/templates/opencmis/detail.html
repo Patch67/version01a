@@ -1,0 +1,61 @@
+{% extends 'opencmis/student-base.html' %}
+{% block title %}{{student}}{% endblock %}
+{% block home-active %}active{% endblock %}
+{% block student-body %}
+    <div class="row">
+        <div class="col-md-4">
+            {% if student.photo %}
+            <img src="{{student.photo.url }}" class="img-responsive">
+            {% else %}
+            <div class="alert alert-warning" role="alert">
+                <strong>No photo</strong>
+            </div>
+            {% endif %}
+        </div>
+        <div class="col-md-8"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+            <a href="{% url 'opencmis:student-update' student.id %}">
+                <span class="glyphicon glyphicon-pencil"></span>
+            </a>
+            {% if student.title.title != "Unknown" %}
+                {{student.title}}&nbsp;
+            {% endif %}
+            {{student.first_name}}&nbsp;{{student.last_name}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">Status:</div>
+        <div class="col-md-10">{{student.status.status}}</div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">Date of Birth:</div>
+        <div class="col-md-10">{{student.date_of_birth}}</div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">Gender:</div>
+        <div class="col-md-10">{{student.gender}}</div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">Ethnicity:</div>
+        <div class="col-md-10">{{student.ethnicity}}</div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">ULN:</div>
+        <div class="col-md-10">{{student.ULN}}</div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">House</div>
+        <div class="col-md-10">{{student.house}}</div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">&nbsp;</div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+
+        </div>
+    </div>
+{% endblock %}
